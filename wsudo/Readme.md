@@ -1,6 +1,10 @@
 ### [https://chocolatey.org/packages/wsudo](https://chocolatey.org/packages/wsudo)
 
+# Installation
+
     choco install wsudo --version 1.0.0
+
+Chocolatey must [already be installed](https://chocolatey.org/install).
 
 # Purpose
 
@@ -20,6 +24,6 @@ Internally, it invokes `"%ComSpec% /K"` elevated and passes the command line ove
 
     C:\Users\User>wsudox "del C:\Windows\Temp\*.* && pause"
 
-To run a GUI program and close the console immediately, just use the [start](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/start) inline command:
+To run a GUI program and close the console immediately, just launch it via the [start](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/start) inline command:
 
     wsudox start notepad C:\Windows\System32\drivers\etc\hosts 
