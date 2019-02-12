@@ -16,7 +16,7 @@ Instead, it uses a helper PowerShell 5.0 script that invokes `"Start-Process -Wa
 
 Internally, it invokes `"%ComSpec% /K"` elevated and passes the command line over to it for execution. It keeps the admin console open when the command has finished.
 
-`wsudox` does the same besides using `"%ComSpec% /K"`, so it closes the console as soon as the command has finished:
+`wsudox` does the same besides using `"%ComSpec% /C"`, so it closes the console as soon as the command has finished:
 
     C:\Users\User>wsudox "del C:\Windows\Temp\*.* && pause"
 
