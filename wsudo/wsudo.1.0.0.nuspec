@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+    <metadata>
+        <id>wsudo</id>
+        <version>1.0.0</version>
+        <title>wsudo</title>
+        <authors>Andrew Nosenko</authors>
+        <owners>Andrew Nosenko</owners>
+        <licenseUrl>https://opensource.org/licenses/MIT</licenseUrl>
+        <projectUrl>https://github.com/noseratio/choco</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>
+            "wsudo" runs elevevated shell commands from the command line in the current directory and 
+            keeps the new console open; "wsudox" does the same but closes the console.
+            E.g.: wsudo del C:\Windows\Temp\*.*
+        </description>
+        <summary>Run elevevated shell commands from the command line.</summary>
+        <releaseNotes></releaseNotes>
+        <tags>sudo runas run shell command line powershell cmd admin administrator</tags>
+    </metadata>
+    <files>
+        <file src="bin\wsudo.cmd" target="bin\wsudo.cmd" />
+        <file src="bin\wsudox.cmd" target="bin\wsudox.cmd" />
+        <file src="bin\wsudo.ps1" target="bin\wsudo.ps1" />
+        <file src="tools\chocolateyInstall.ps1" target="tools\chocolateyInstall.ps1" />
+    </files>
+</package>

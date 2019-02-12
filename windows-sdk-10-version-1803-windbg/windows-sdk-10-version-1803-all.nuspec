@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>windows-sdk-10-version-1803-windbg</id>
+    <version>10.0.17134.12</version>
+    <!-- <packageSourceUrl>Where is this Chocolatey package located (think GitHub)? packageSourceUrl is highly recommended for the community feed</packageSourceUrl>-->
+    <owners>noseratio</owners>
+    <title>Windows Software Development Kit for Windows 10 Version 1803 (Debugging Tools)</title>
+    <authors>Microsoft Corporation</authors>
+    <projectUrl>https://blogs.windows.com/buildingapps/2018/04/30/start-developing-on-windows-10-april-2018-update-today</projectUrl>
+    <tags>Windows 10 SDK 1803 17134 WinDbg Debugging Tools</tags>
+    <summary>Windows Software Development Kit for Windows 10 Version 1803 (Debugging Tools)</summary>
+    <description>Windows Software Development Kit for Windows 10 Version 1803 (The April 2018 Update, Build 10.0.17134.12), Debugging Tools</description>
+  </metadata>
+  <files>
+    <file src="tools\chocolateyinstall.ps1" target="tools" />
+  </files>
+</package>

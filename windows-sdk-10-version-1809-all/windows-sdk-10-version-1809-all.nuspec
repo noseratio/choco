@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>windows-sdk-10-version-1809-all</id>
+    <version>10.0.17763.132</version>
+    <!-- <packageSourceUrl>Where is this Chocolatey package located (think GitHub)? packageSourceUrl is highly recommended for the community feed</packageSourceUrl>-->
+    <owners>noseratio</owners>
+    <title>Windows Software Development Kit for Windows 10 Version 1809 (All Features)</title>
+    <authors>Microsoft Corporation</authors>
+    <projectUrl>https://blogs.windows.com/buildingapps/2018/10/02/start-developing-on-windows-10-october-2018-update-today</projectUrl>
+    <tags>Windows 10 SDK 1809 17763</tags>
+    <summary>Windows Software Development Kit for Windows 10 Version 1809 (All Features)</summary>
+    <description>Windows Software Development Kit for Windows 10 Version 1809 (The October 2018 Update, Build 10.0.17763.132), All Features</description>
+  </metadata>
+  <files>
+    <file src="tools\chocolateyinstall.ps1" target="tools" />
+  </files>
+</package>
