@@ -6,8 +6,8 @@
         <title>wsudo</title>
         <authors>Andrew Nosenko</authors>
         <owners>Andrew Nosenko</owners>
-        <licenseUrl>https://opensource.org/licenses/MIT</licenseUrl>
-        <projectUrl>https://github.com/noseratio/choco</projectUrl>
+        <licenseUrl>https://github.com/noseratio/choco/blob/master/LICENSE</licenseUrl>
+        <projectUrl>https://github.com/noseratio/choco/tree/master/wsudo</projectUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>
             "wsudo" runs elevevated shell commands from the command line in the current directory and 
