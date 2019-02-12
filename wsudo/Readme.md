@@ -1,6 +1,6 @@
 ### [https://chocolatey.org/packages/wsudo](https://chocolatey.org/packages/wsudo)
 
-    choco install wsudo
+    choco install wsudo --version 1.0.0
 
 # Purpose
 
