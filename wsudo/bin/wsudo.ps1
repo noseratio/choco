@@ -1,4 +1,4 @@
-#Requires -Version 3.0
+#Requires -Version 5.0
 
 param(
   [Parameter(Mandatory = $true)] [ValidateSet('prepare','run')] [string] $action,
