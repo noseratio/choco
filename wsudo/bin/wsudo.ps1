@@ -31,7 +31,7 @@ switch($action) {
     # get the powershell EXE name
     $powershell = [System.Diagnostics.Process]::GetCurrentProcess().MainModule.FileName
     $pi = Start-Process -PassThru -Verb runAs `
-      -FilePath $powershell -ArgumentList "-f $PSCommandPath -action run -commandInfo $commandInfoEncoded"
+      -FilePath $powershell -ArgumentList "-f $PSCommandPath -action run -command $commandInfoEncoded"
     $pi.WaitForExit()
     exit $pi.ExitCode
     break
@@ -41,7 +41,7 @@ switch($action) {
     if (!$command) { 
       throw 'Must provide commandInfo.'
     }
-    
+
     $commandInfoJson = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($command));
     $commandInfo = [CommandInfo](ConvertFrom-Json $commandInfoJson)
 
