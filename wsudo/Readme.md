@@ -2,7 +2,7 @@
 
 # Installation
 
-    choco install wsudo --version 1.0.0
+    choco install wsudo
 
 [Chocolatey](https://chocolatey.org/install) must already be installed.
 
