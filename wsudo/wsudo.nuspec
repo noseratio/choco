@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
         <id>wsudo</id>
-        <version>1.0.0</version>
+        <version>1.0.1</version>
         <packageSourceUrl>https://github.com/noseratio/choco/tree/master/wsudo</packageSourceUrl>
         <title>wsudo</title>
         <authors>Andrew Nosenko</authors>
@@ -44,12 +44,15 @@ To run a GUI program as admin and close the admin console immediately, just laun
         </dependencies>       
         <releaseNotes>
             1.0.0 (Feb 12, 2019) - Initial release
+            1.0.1 (Feb 26, 2019) - Added wasudo/wasudox
         </releaseNotes>        
     </metadata>
     <files>
         <file src="bin\wsudo.cmd" target="bin\wsudo.cmd" />
         <file src="bin\wsudox.cmd" target="bin\wsudox.cmd" />
-        <file src="bin\wsudo.ps1" target="bin\wsudo.ps1" />
+        <file src="bin\wasudo.cmd" target="bin\wasudo.cmd" />
+        <file src="bin\wasudox.cmd" target="bin\wasudox.cmd" />
+        <file src="bin\wsudoexec.ps1" target="bin\wsudoexec.ps1" />
         <file src="tools\chocolateyInstall.ps1" target="tools\chocolateyInstall.ps1" />
         <file src="tools\chocolateyUninstall.ps1" target="tools\chocolateyUninstall.ps1" />
     </files>
