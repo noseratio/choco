@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
         <id>wsudo</id>
-        <version>1.0.0</version>
+        <version>1.0.1</version>
         <packageSourceUrl>https://github.com/noseratio/choco/tree/master/wsudo</packageSourceUrl>
         <title>wsudo</title>
         <authors>Andrew Nosenko</authors>
@@ -14,27 +14,19 @@
 <![CDATA[        
 # Purpose
 
-Invoke a program with elevated rights (as Administrator) from a non-admin shell command prompt.
-This implementation doesn't depend on the legacy Windows Script Host (`CScript`).
-Instead, it uses a helper PowerShell 5 script that invokes `"Start-Process -Wait -Verb runAs ..."` cmdlet.
-Your system most likely already has PowerShell 5.x installed, otherwise you'll be offered 
-to install it as a dependency.
+`wsudo` is a Linux `sudo`-like tool for Windows to invoke a program with elevated rights (as Administrator) from a non-admin shell command prompt.
+This implementation doesn't depend on the legacy Windows Script Host (`CScript`). Instead, it uses a helper PowerShell 5.1 script that invokes `"Start-Process -Wait -Verb runAs ..."` cmdlet. Your system most likely already has PowerShell 5.x installed, otherwise you'll be offered to install it as a dependency.
 
 # Usage
 
-`wsudo` runs a program or an inline command with elevated rights in the current directory:
+`wsudo` runs a program or an inline command with elevated rights in the current directory. Examples:
 
-    C:\Users\User>wsudo del C:\Windows\Temp\*.* 
+    wsudo .\myAdminScript.bat 
+    wsudox "del C:\Windows\Temp\*.* && pause"
+    wasudo cup all -y
+    wasudox start notepad C:\Windows\System32\drivers\etc\hosts 
 
-Internally, it invokes `"%ComSpec% /K"` elevated and passes the command line over to it for execution. It keeps the admin console open when the command has finished.
-
-`wsudox` does the same besides using `"%ComSpec% /C"`, so it closes the admin console as soon as the command has finished:
-
-    C:\Users\User>wsudox "del C:\Windows\Temp\*.* && pause"
-
-To run a GUI program as admin and close the admin console immediately, just launch it via the [start](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/start) inline command:
-
-    C:\Users\User>wsudox start notepad C:\Windows\System32\drivers\etc\hosts 
+**For more details, visit the [GitHub repro](https://github.com/noseratio/choco/tree/master/wsudo).**
 ]]>    
         </description>
         <summary>Run elevevated shell commands from the command line.</summary>
@@ -44,12 +36,15 @@ To run a GUI program as admin and close the admin console immediately, just laun
         </dependencies>       
         <releaseNotes>
             1.0.0 (Feb 12, 2019) - Initial release
+            1.0.1 (Feb 26, 2019) - Added wasudo/wasudox
         </releaseNotes>        
     </metadata>
     <files>
         <file src="bin\wsudo.cmd" target="bin\wsudo.cmd" />
         <file src="bin\wsudox.cmd" target="bin\wsudox.cmd" />
-        <file src="bin\wsudo.ps1" target="bin\wsudo.ps1" />
+        <file src="bin\wasudo.cmd" target="bin\wasudo.cmd" />
+        <file src="bin\wasudox.cmd" target="bin\wasudox.cmd" />
+        <file src="bin\wsudoexec.ps1" target="bin\wsudoexec.ps1" />
         <file src="tools\chocolateyInstall.ps1" target="tools\chocolateyInstall.ps1" />
         <file src="tools\chocolateyUninstall.ps1" target="tools\chocolateyUninstall.ps1" />
     </files>

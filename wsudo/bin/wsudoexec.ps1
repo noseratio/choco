@@ -1,10 +1,11 @@
-#Requires -Version 5.0
+#Requires -Version 5.1
 
 param(
   [Parameter(Mandatory = $true)] [ValidateSet('prepare','run')] [string] $action,
   [string] $title,
   [string] $command,
-  [switch] $stayOpen)
+  [switch] $stayOpen,
+  [switch] $detach)
 
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
@@ -30,10 +31,26 @@ switch($action) {
     $commandInfoEncoded = [Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes($commandInfoJson))
     # get the powershell EXE name
     $powershell = [System.Diagnostics.Process]::GetCurrentProcess().MainModule.FileName
-    $pi = Start-Process -PassThru -Verb runAs `
-      -FilePath $powershell -ArgumentList "-f $PSCommandPath -action run -command $commandInfoEncoded"
-    $pi.WaitForExit()
-    exit $pi.ExitCode
+    $startProcessArgs = @{
+      PassThru = $true
+      FilePath = $powershell
+      ArgumentList = @("-File $PSCommandPath", '-action run', "-command $commandInfoEncoded")
+      Verb = 'runAs'
+    }
+    $pi = Start-Process @startProcessArgs
+    if ($detach) {
+      # don't wait for the child proces to finish
+      if ($pi.HasExited) {
+        exit $pi.ExitCode
+      }
+      else {
+        exit 0
+      }
+    }
+    else {
+      $pi.WaitForExit()
+      exit $pi.ExitCode
+    }
     break
   }
   'run' {
@@ -50,9 +67,14 @@ switch($action) {
     }
 
     Set-Location $commandInfo.curDir
-    $opt = if ($commandInfo.stayOpen) { '/K' } else { '/C' }
-    $pi = Start-Process -PassThru -NoNewWindow `
-      -FilePath $commandInfo.comSpec -ArgumentList "$opt $($commandInfo.commandLine)"
+    $comSpecOpts = $(if ($commandInfo.stayOpen) { '/K' } else { '/C' })
+    $startProcessArgs = @{
+      PassThru = $true
+      NoNewWindow = $true
+      FilePath = $commandInfo.comSpec
+      ArgumentList = @($comSpecOpts + $commandInfo.commandLine)
+    }
+    $pi = Start-Process @startProcessArgs
     $pi.WaitForExit()
     exit $pi.ExitCode
     break
