@@ -15,7 +15,6 @@ This implementation doesn't depend on the legacy Windows Script Host (`CScript`)
 
 `wsudo` runs a program or an inline command with elevated rights in the context of the current directory:
 
-    C:\Users\Me>wsudo cup all -y
     C:\Users\Me>wsudo .\myAdminScript.bat 
     C:\Users\Me>wsudo del C:\Windows\Temp\*.* 
 
