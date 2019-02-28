@@ -29,6 +29,6 @@ Internally, it invokes `cmd.exe` (`"%ComSpec% /K"`) elevating it and passing the
 
     wasudo cup all -y
 
-In all cases, the specified command runs attached to and reusing the admin console created by any of `wsudo` variants. That makes sense for the most CLI-based commands. To run a GUI program as Administrator detached from the admin console (and thus close the admin console and exit immediately), you could launch it via the inline [start](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/start) command:
+In all cases, the specified command runs attached to and reusing the admin console created by any of `wsudo` variants. This makes sense for the most CLI-based commands. To run a GUI program as Administrator detached from the admin console (and thus close the admin console and exit immediately), you could use [start](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/start):
 
     wasudox start notepad C:\Windows\System32\drivers\etc\hosts 
