@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
         <id>wsudo</id>
-        <version>1.0.1</version>
+        <version>1.0.2</version>
         <packageSourceUrl>https://github.com/noseratio/choco/tree/master/wsudo</packageSourceUrl>
         <title>wsudo</title>
         <authors>Andrew Nosenko</authors>
@@ -37,6 +37,7 @@ This implementation doesn't depend on the legacy Windows Script Host (`CScript`)
         <releaseNotes>
             1.0.0 (Feb 12, 2019) - Initial release
             1.0.1 (Feb 26, 2019) - Added wasudo/wasudox
+            1.0.2 (Mar 25, 2019) - Added `-ExecutionPolicy Bypass -NoProfile -NoLogo` PS options
         </releaseNotes>        
     </metadata>
     <files>

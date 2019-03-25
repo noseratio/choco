@@ -34,7 +34,7 @@ switch($action) {
     $startProcessArgs = @{
       PassThru = $true
       FilePath = $powershell
-      ArgumentList = @("-File $PSCommandPath", '-action run', "-command $commandInfoEncoded")
+      ArgumentList = @("-ExecutionPolicy Bypass -NoProfile -NoLogo -File $PSCommandPath", '-action run', "-command $commandInfoEncoded")
       Verb = 'runAs'
     }
     $pi = Start-Process @startProcessArgs
