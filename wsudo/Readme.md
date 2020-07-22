@@ -31,3 +31,5 @@ Internally, it invokes `cmd.exe` (`"%ComSpec% /K"`) elevating it and passing the
 In all cases, the specified command runs attached to and reusing the admin console created by any of `wsudo` variants. This makes sense for the most CLI-based commands. To run a GUI program as Administrator detached from the admin console (and thus close the admin console and exit immediately), you could use [start](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/start):
 
     wasudox start notepad C:\Windows\System32\drivers\etc\hosts 
+
+I also often invoke `wasudo` from the Windows Run box (<kbd>Win</kbd>+<kbd>R</kbd>), or by typing `wasudo` <kbd>Enter</kbd> in the Windows Explorer address bar (<kbd>Alt</kbd>+<kbd>D</kbd>). The latter opens an admin command prompt in the Explorer's current folder.
