@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>dotnet-core-3-desktop-runtime-x64</id>
+    <version>3.1.6</version>
+    <packageSourceUrl>https://github.com/noseratio/choco/tree/master/dotnet-core-3-desktop-runtime-x64</packageSourceUrl>
+    <owners>noseratio</owners>
+    <title>Desktop Runtime v3.1.6 x64 LTS</title>
+    <authors>Microsoft Corporation</authors>
+    <projectUrl>https://dotnet.microsoft.com/download/dotnet-core/3.1</projectUrl>
+    <tags>.net dotnet core runtime desktop 3.1 3.1.6 x64</tags>
+    <summary>The Desktop Runtime 3.1 x64 LTS</summary>
+    <description>The Desktop Runtime 3.1 x64 enables you to run existing Windows desktop 64-bit applications. This release includes the .NET Core Runtime, you do not need to install it separately.</description>
+  </metadata>
+  <files>
+    <file src="tools\chocolateyinstall.ps1" target="tools" />
+  </files>
+</package>
