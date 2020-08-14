@@ -1,7 +1,7 @@
 ﻿$packageName = 'dotnet-core-3-desktop-runtime-x64'
 $installerType = 'EXE'
-$url = 'https://download.visualstudio.microsoft.com/download/pr/3eb7efa1-96c6-4e97-bb9f-563ecf595f8a/7efd9c1cdd74df8fb0a34c288138a84f/windowsdesktop-runtime-3.1.6-win-x64.exe'
-$checksum = '75F80882ADE213B5D75AB4E003CFEAAFE93D4F377A5D7A76077BB82728BCBA58'
+$url = 'https://download.visualstudio.microsoft.com/download/pr/5e4695fb-da51-4fa8-a090-07a64480888c/65aa842670d2280b5d05b8a070a9f495/windowsdesktop-runtime-3.1.7-win-x64.exe'
+$checksum = 'D922F5E58FB04DD5C9FECE9FAABA215726E7F987B13B3D17E8F8A0CA35F70799'
 $checksumType = 'sha256'
 $silentArgs = "/install /quiet /norestart /Log ""$env:temp\${packageName}_$([Guid]::NewGuid().ToString('D')).log"""
 $validExitCodes = @(0,3010)

@@ -2,13 +2,13 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>dotnet-core-3-desktop-runtime-x64</id>
-    <version>3.1.6</version>
+    <version>3.1.7</version>
     <packageSourceUrl>https://github.com/noseratio/choco/tree/master/dotnet-core-3-desktop-runtime-x64</packageSourceUrl>
     <owners>noseratio</owners>
-    <title>.NET Core 3.1 Desktop Runtime v3.1.6 x64 LTS</title>
+    <title>.NET Core 3.1 Desktop Runtime v3.1.7 x64 LTS</title>
     <authors>Microsoft Corporation</authors>
     <projectUrl>https://dotnet.microsoft.com/download/dotnet-core/3.1</projectUrl>
-    <tags>.net dotnet core runtime desktop 3.1 3.1.6 x64</tags>
+    <tags>.net dotnet core runtime desktop 3.1 3.1.7 x64</tags>
     <summary>The Desktop Runtime 3.1 x64 LTS</summary>
     <description>The .NET Core 3.1 Desktop Runtime 3.1 x64 enables you to run existing Windows desktop 64-bit applications. This release includes the .NET Core Runtime, you do not need to install it separately.</description>
   </metadata>
