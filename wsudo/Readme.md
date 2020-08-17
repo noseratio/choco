@@ -24,12 +24,21 @@ Internally, it invokes `cmd.exe` (`"%ComSpec% /K"`) elevating it and passing the
 
     C:\Users\Me>wsudox "del C:\Windows\Temp\*.* && pause"
 
-`wasudo`/`wasudox` variants are different from `wsudo`/`wsudox` only in that they start the admin console to execute the specified command and then immediately exit themselves. They don't wait for the admin console to close ("w**a**sudo" is for **A**synchronous). This is handy if you need to run something from the Windows Run UI (<kbd>Win+R</kbd>). E.g., to update all Chocolatey packages:
+`wasudo`/`wasudox` variants are different from `wsudo`/`wsudox` only in that they start the admin console and then immediately exit themselves. They don't wait for the admin console to close ("w**a**sudo" is for **A**synchronous). This is handy if you need to run something from the Windows Run UI (<kbd>Win+R</kbd>). E.g., to update all Chocolatey packages:
 
     wasudo cup all -y
 
 In all cases, the specified command runs attached to and reusing the admin console created by any of `wsudo` variants. This makes sense for the most CLI-based commands. To run a GUI program as Administrator detached from the admin console (and thus close the admin console and exit immediately), you could use [start](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/start):
 
     wasudox start notepad C:\Windows\System32\drivers\etc\hosts 
+
+Another example, run Windows Terminal in elevated mode in the current folder:
+
+    wasudox start wt.exe -d %cd%
+
+**Starting from v1.0.3**, another pair of aliases has been added for launching elevated GUI apps, `wsudog`/`wasudog`, so appending `start` as above is no longer needed:
+
+    wasudog notepad.exe C:\Windows\System32\drivers\etc\hosts 
+    wasudog wt.exe -d %cd%
 
 I also often invoke `wasudo` from the Windows Run box (<kbd>Win</kbd>+<kbd>R</kbd>), or by typing `wasudo` <kbd>Enter</kbd> in the Windows Explorer address bar (<kbd>Alt</kbd>+<kbd>D</kbd>). The latter opens an admin command prompt in the Explorer's current folder.

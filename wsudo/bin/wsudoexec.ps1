@@ -4,7 +4,8 @@ param(
   [Parameter(Mandatory = $true)] [ValidateSet('prepare','run')] [string] $action,
   [string] $title,
   [string] $command,
-  [switch] $stayOpen,
+  [switch] $permanent,
+  [switch] $useStart,
   [switch] $detach)
 
 Set-StrictMode -Version Latest
@@ -14,7 +15,7 @@ class Helpers {
   static [bool]IsElevated()
   {
       $currentPrincipal = New-Object Security.Principal.WindowsPrincipal( `
-          [Security.Principal.WindowsIdentity]::GetCurrent())
+        [Security.Principal.WindowsIdentity]::GetCurrent())
       return $currentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)        
   }
 }
@@ -24,8 +25,9 @@ class CommandInfo {
   [string]$comSpec
   [string]$commandLine
   [string]$title
+  [bool]$permanent
   [bool]$detached
-  [bool]$stayOpen
+  [bool]$useStart
   [bool]$wasElevated
 }
 
@@ -34,13 +36,16 @@ switch($action) {
     # pack curDir, commandLine etc using JSON/base64 and re-launch itself as admin
     $commandInfo = [CommandInfo]::new()
     $commandInfo.comSpec = $env:ComSpec
-    $commandInfo.commandLine = $env:wsudo_commandLine
+    $commandInfo.commandLine = ([string]$env:wsudo_commandLine).Trim()
     $commandInfo.curDir = $env:wsudo_curDir
     $commandInfo.title = $title
+    $commandInfo.permanent = $permanent
     $commandInfo.detached = $detach
-    $commandInfo.stayOpen = $stayOpen
+    $commandInfo.useStart = $useStart
     $commandInfo.wasElevated = [Helpers]::IsElevated()
 
+    $empty = [String]::IsNullOrWhiteSpace($commandInfo.commandLine)
+  
     $commandInfoJson = ConvertTo-Json -Compress $commandInfo
     $commandInfoEncoded = [Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes($commandInfoJson))
     # get the powershell EXE name
@@ -53,6 +58,9 @@ switch($action) {
 
     if (!$commandInfo.wasElevated) {
       $startProcessArgs.Verb = 'runAs'
+      if ($useStart -and !$empty) {
+        $startProcessArgs.WindowStyle = "Minimized"
+      }
     }
     else {
       $startProcessArgs.NoNewWindow = !$detach;
@@ -99,17 +107,12 @@ switch($action) {
     {
       if (!$commandInfo.detached) {
         if ($empty) {
-          Write-Output "Nothing to execute, exiting."
+          Write-Output "Already elevated and nothing to execute, exiting."
           exit 1
         }
         else {
-          $commandInfo.stayOpen = $false;
+          $commandInfo.permanent = $false
         }
-      }
-    }
-    else {
-      if ($empty) {
-        $commandInfo.stayOpen = $true;
       }
     }
 
@@ -117,7 +120,11 @@ switch($action) {
       $host.ui.RawUI.WindowTitle = $commandInfo.title
     }
 
-    $comSpecOpts = $(if ($commandInfo.stayOpen -or $empty) { '/K' } else { '/C' })
+    $comSpecOpts = '/C start '
+    if (!$commandInfo.useStart) {
+      $comSpecOpts = $(if ($commandInfo.permanent) { '/K ' } else { '/C ' })
+    } 
+
     $startProcessArgs = @{
       PassThru = $true
       NoNewWindow = $true
@@ -125,6 +132,7 @@ switch($action) {
       FilePath = $commandInfo.comSpec
       ArgumentList = @($comSpecOpts + $commandInfo.commandLine)
     }
+
     $pi = Start-Process @startProcessArgs
     $pi.WaitForExit()
     exit $pi.ExitCode
