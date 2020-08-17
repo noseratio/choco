@@ -4,29 +4,48 @@ param(
   [Parameter(Mandatory = $true)] [ValidateSet('prepare','run')] [string] $action,
   [string] $title,
   [string] $command,
-  [switch] $stayOpen,
+  [switch] $permanent,
+  [switch] $useStart,
   [switch] $detach)
 
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
+
+class Helpers {
+  static [bool]IsElevated()
+  {
+      $currentPrincipal = New-Object Security.Principal.WindowsPrincipal( `
+        [Security.Principal.WindowsIdentity]::GetCurrent())
+      return $currentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)        
+  }
+}
 
 class CommandInfo {
   [string]$curDir
   [string]$comSpec
   [string]$commandLine
   [string]$title
-  [bool]$stayOpen
+  [bool]$permanent
+  [bool]$detached
+  [bool]$useStart
+  [bool]$wasElevated
 }
 
 switch($action) {
-  'prepare' {
+  'prepare' { 
     # pack curDir, commandLine etc using JSON/base64 and re-launch itself as admin
     $commandInfo = [CommandInfo]::new()
     $commandInfo.comSpec = $env:ComSpec
-    $commandInfo.commandLine = $env:wsudo_commandLine
+    $commandInfo.commandLine = ([string]$env:wsudo_commandLine).Trim()
     $commandInfo.curDir = $env:wsudo_curDir
     $commandInfo.title = $title
-    $commandInfo.stayOpen = $stayOpen
+    $commandInfo.permanent = $permanent
+    $commandInfo.detached = $detach
+    $commandInfo.useStart = $useStart
+    $commandInfo.wasElevated = [Helpers]::IsElevated()
+
+    $empty = [String]::IsNullOrWhiteSpace($commandInfo.commandLine)
+  
     $commandInfoJson = ConvertTo-Json -Compress $commandInfo
     $commandInfoEncoded = [Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes($commandInfoJson))
     # get the powershell EXE name
@@ -35,9 +54,25 @@ switch($action) {
       PassThru = $true
       FilePath = $powershell
       ArgumentList = @("-ExecutionPolicy Bypass -NoProfile -NoLogo -File $PSCommandPath", '-action run', "-command $commandInfoEncoded")
-      Verb = 'runAs'
     }
-    $pi = Start-Process @startProcessArgs
+
+    if (!$commandInfo.wasElevated) {
+      $startProcessArgs.Verb = 'runAs'
+      if ($useStart -and !$empty) {
+        $startProcessArgs.WindowStyle = "Minimized"
+      }
+    }
+    else {
+      $startProcessArgs.NoNewWindow = !$detach;
+    }
+
+    try {
+      $pi = Start-Process @startProcessArgs
+    }
+    catch {
+      exit 1
+    }
+
     if ($detach) {
       # don't wait for the child proces to finish
       if ($pi.HasExited) {
@@ -48,6 +83,9 @@ switch($action) {
       }
     }
     else {
+      if (!$commandInfo.wasElevated) {
+        Write-Output "Elevated and waiting..."
+      }
       $pi.WaitForExit()
       exit $pi.ExitCode
     }
@@ -62,22 +100,42 @@ switch($action) {
     $commandInfoJson = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($command));
     $commandInfo = [CommandInfo](ConvertFrom-Json $commandInfoJson)
 
-    if ($commandInfo.title) { 
+    Set-Location $commandInfo.curDir
+    $empty = [String]::IsNullOrWhiteSpace($commandInfo.commandLine)
+
+    if ($commandInfo.wasElevated) 
+    {
+      if (!$commandInfo.detached) {
+        if ($empty) {
+          Write-Output "Already elevated and nothing to execute, exiting."
+          exit 1
+        }
+        else {
+          $commandInfo.permanent = $false
+        }
+      }
+    }
+
+    if ($commandInfo.title -and ($commandInfo.detached -or !$commandInfo.wasElevated)) { 
       $host.ui.RawUI.WindowTitle = $commandInfo.title
     }
 
-    Set-Location $commandInfo.curDir
-    $comSpecOpts = $(if ($commandInfo.stayOpen) { '/K' } else { '/C' })
+    $comSpecOpts = '/C start '
+    if (!$commandInfo.useStart) {
+      $comSpecOpts = $(if ($commandInfo.permanent) { '/K ' } else { '/C ' })
+    } 
+
     $startProcessArgs = @{
       PassThru = $true
       NoNewWindow = $true
+      WorkingDirectory = $commandInfo.curDir
       FilePath = $commandInfo.comSpec
       ArgumentList = @($comSpecOpts + $commandInfo.commandLine)
     }
+
     $pi = Start-Process @startProcessArgs
     $pi.WaitForExit()
     exit $pi.ExitCode
-    break
   }
   default {
     throw 'Invalid action.'

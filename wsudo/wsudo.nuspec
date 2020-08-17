@@ -2,13 +2,13 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
         <id>wsudo</id>
-        <version>1.0.2</version>
-        <packageSourceUrl>https://github.com/noseratio/choco/tree/master/wsudo</packageSourceUrl>
+        <version>1.0.3</version>
+        <packageSourceUrl>https://github.com/noseratio/choco/tree/main/wsudo</packageSourceUrl>
         <title>wsudo</title>
         <authors>Andrew Nosenko</authors>
         <owners>Andrew Nosenko</owners>
-        <licenseUrl>https://github.com/noseratio/choco/blob/master/LICENSE</licenseUrl>
-        <projectUrl>https://github.com/noseratio/choco/tree/master/wsudo</projectUrl>
+        <licenseUrl>https://github.com/noseratio/choco/blob/main/LICENSE</licenseUrl>
+        <projectUrl>https://github.com/noseratio/choco/tree/main/wsudo</projectUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>
 <![CDATA[        
@@ -25,6 +25,7 @@ This implementation doesn't depend on the legacy Windows Script Host (`CScript`)
     wsudox "del C:\Windows\Temp\*.* && pause"
     wasudo cup all -y
     wasudox start notepad C:\Windows\System32\drivers\etc\hosts 
+    wasudog wt.exe -d %cd%
 
 **For more details, visit the [GitHub repro](https://github.com/noseratio/choco/tree/master/wsudo).**
 ]]>    
@@ -32,19 +33,21 @@ This implementation doesn't depend on the legacy Windows Script Host (`CScript`)
         <summary>Run elevevated shell commands from the command line.</summary>
         <tags>sudo runas run shell command line powershell cmd admin administrator</tags>
         <dependencies>
-            <dependency id="powershell" version="5.1.0.0" />
         </dependencies>       
         <releaseNotes>
             1.0.0 (Feb 12, 2019) - Initial release
             1.0.1 (Feb 26, 2019) - Added wasudo/wasudox
             1.0.2 (Mar 25, 2019) - Added `-ExecutionPolicy Bypass -NoProfile -NoLogo` PS options
+            1.0.3 (Aug 14, 2020) - Check if already elevated, addded wsudog/wasudog
         </releaseNotes>        
     </metadata>
     <files>
         <file src="bin\wsudo.cmd" target="bin\wsudo.cmd" />
         <file src="bin\wsudox.cmd" target="bin\wsudox.cmd" />
+        <file src="bin\wsudog.cmd" target="bin\wsudog.cmd" />
         <file src="bin\wasudo.cmd" target="bin\wasudo.cmd" />
         <file src="bin\wasudox.cmd" target="bin\wasudox.cmd" />
+        <file src="bin\wasudog.cmd" target="bin\wasudog.cmd" />
         <file src="bin\wsudoexec.ps1" target="bin\wsudoexec.ps1" />
         <file src="tools\chocolateyInstall.ps1" target="tools\chocolateyInstall.ps1" />
         <file src="tools\chocolateyUninstall.ps1" target="tools\chocolateyUninstall.ps1" />
