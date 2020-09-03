@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
-    <id>dotnet-core-3-desktop-runtime</id>
+    <id>dotnetcore3-desktop-runtime</id>
     <version>3.1.7</version>
-    <packageSourceUrl>https://github.com/noseratio/choco/tree/master/dotnet-core-3-desktop-runtime</packageSourceUrl>
+    <packageSourceUrl>https://github.com/noseratio/choco/tree/master/dotnetcore3-desktop-runtime</packageSourceUrl>
     <owners>noseratio</owners>
     <title>.NET Core 3.1 Desktop Runtime v3.1.7 LTS</title>
     <authors>Microsoft Corporation</authors>

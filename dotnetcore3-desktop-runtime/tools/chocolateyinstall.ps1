@@ -1,5 +1,5 @@
 ﻿$packageArgs = @{
-  packageName    = 'dotnet-core-3-desktop-runtime'
+  packageName    = 'dotnetcore3-desktop-runtime'
   fileType       = 'exe'
   url            = 'https://download.visualstudio.microsoft.com/download/pr/3e6c8a13-9d89-4991-b683-b6bb279bc096/d1c44ba0c34f2be8878c36d27287e1a5/windowsdesktop-runtime-3.1.7-win-x86.exe'
   checksum       = '5ad80c4e51a80bb5e4db0885623811b8d3e7cedacd6e470c6419f0d6fbd8ffef'
