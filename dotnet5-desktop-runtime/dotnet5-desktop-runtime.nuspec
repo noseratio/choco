@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>dotnet5-desktop-runtime</id>
+    <version>5.0.0</version>
+    <packageSourceUrl>https://github.com/noseratio/choco/tree/master/dotnet5-desktop-runtime</packageSourceUrl>
+    <owners>noseratio</owners>
+    <title>.NET 5.0 Desktop Runtime v5.0.0</title>
+    <authors>Microsoft Corporation</authors>
+    <projectUrl>https://dotnet.microsoft.com/download/dotnet/5.0</projectUrl>
+    <tags>.net dotnet core runtime desktop 5.0 5.0.0 x64 x86</tags>
+    <summary>The Desktop Runtime 5.0</summary>
+    <description>The .NET 5 Desktop Runtime v5.0.0 enables you to run existing Windows desktop applications. This release includes the .NET 5 Runtime, you do not need to install it separately.</description>
+  </metadata>
+  <files>
+    <file src="tools\chocolateyinstall.ps1" target="tools" />
+  </files>
+</package>
