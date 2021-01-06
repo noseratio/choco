@@ -2,13 +2,13 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>windows-sdk-10-version-2004-windbg</id>
-    <version>10.0.19041.0</version>
+    <version>10.0.19041.685</version>
     <!-- <packageSourceUrl>Where is this Chocolatey package located (think GitHub)? packageSourceUrl is highly recommended for the community feed</packageSourceUrl>-->
     <owners>noseratio</owners>
-    <title>Windows Software Development Kit for Windows 10 Version 2004 (Debugging Tools)</title>
+    <title>Windows Software Development Kit for Windows 10 Version 2004 (10.0.19041.685) (Debugging Tools)</title>
     <authors>Microsoft Corporation</authors>
     <projectUrl>https://blogs.windows.com/windowsdeveloper/2020/05/12/start-developing-on-windows-10-version-2004-today</projectUrl>
-    <tags>Windows 10 SDK 2004 19041 WinDbg Debugging Tools</tags>
+    <tags>Windows 10 SDK 2004 19041 685 WinDbg Debugging Tools</tags>
     <summary>Windows Software Development Kit for Windows 10 Version 2004 (Debugging Tools)</summary>
     <description>Windows Software Development Kit for Windows 10 Version 2004 (The May 2020 Update, Build 10.0.19041.0), Debugging Tools</description>
   </metadata>
