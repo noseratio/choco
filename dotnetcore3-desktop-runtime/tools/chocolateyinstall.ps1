@@ -2,17 +2,17 @@
   packageName    = 'dotnetcore3-desktop-runtime'
   fileType       = 'exe'
 
-  url            = 'https://download.visualstudio.microsoft.com/download/pr/865d0be5-16e2-4b3d-a990-f4c45acd280c/ec867d0a4793c0b180bae85bc3a4f329/windowsdesktop-runtime-3.1.10-win-x86.exe'
-  checksum       = '1697e69644a1df46922e440c1ea16e583660f79f3b9b109b493a24835ae543ea6180c5167d6dbe89d8dd8991f865dba717525e333e4a2f3231973afa6a320b5'
+  url            = 'https://download.visualstudio.microsoft.com/download/pr/c39e684e-f804-4e5d-b2ca-eaf4ac49d7b3/fb155e336f2a2bea7efbb3161822296e/windowsdesktop-runtime-3.1.13-win-x86.exe'
+  checksum       = '987cc4c2878228e95c89462c1dea53793dc9dccea5cfc7db4520a676a291a6cfcf1761b5dc15e5ac36d962d3c7c73fcd4c1ec9a54de023bf31066767a4056128'
   checksumType   = 'sha512'
 
-  url64bit       = 'https://download.visualstudio.microsoft.com/download/pr/513acf37-8da2-497d-bdaa-84d6e33c1fee/eb7b010350df712c752f4ec4b615f89d/windowsdesktop-runtime-3.1.10-win-x64.exe'
-  checksum64     = '14a7d97fb258bee024cff3585492ed43c3ec6ac823b50980ddde8241a8bca3e578c38ca28e461630d38c180bd72323e1fcb0ee2e6e65ef9bfc8481df7beef142'
+  url64bit       = 'https://download.visualstudio.microsoft.com/download/pr/aa717f57-3ae5-48fa-a3ab-0018338d0726/fb37276b1575772461701339110e7a54/windowsdesktop-runtime-3.1.13-win-x64.exe'
+  checksum64     = '4a5cdbdb851cf94130dfbe5429aeec2471e0621c9f79c57ce57655c15854c5afce18fd0b8224c7e65afb98eccc8cf8881b021c3f7eb6dd05d0463225c15abb18'
   checksumType64 = 'sha512'
 
   silentArgs     = "/install /quiet /norestart /Log ""$env:temp\${packageName}_$([Guid]::NewGuid().ToString('D')).log"""
   validExitCodes = @(0,3010)
-  softwareName   = '.NET Core Desktop Runtime v3.1.10'
+  softwareName   = '.NET Core Desktop Runtime v3.1.13'
 }
 
 Install-ChocolateyPackage @packageArgs
