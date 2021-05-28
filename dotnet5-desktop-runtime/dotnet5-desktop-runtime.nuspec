@@ -2,17 +2,17 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>dotnet5-desktop-runtime</id>
-    <version>5.0.5</version>
+    <version>5.0.6</version>
     <packageSourceUrl>https://github.com/noseratio/choco/tree/master/dotnet5-desktop-runtime</packageSourceUrl>
     <owners>noseratio</owners>
-    <title>[Deprecated] .NET 5.0 Desktop Runtime v5.0.5</title>
+    <title>[Deprecated] .NET 5.0 Desktop Runtime v5.0.6</title>
     <authors>Microsoft Corporation</authors>
     <projectUrl>https://dotnet.microsoft.com/download/dotnet/5.0</projectUrl>
-    <tags>.net dotnet core runtime desktop 5.0 5.0.5 x64 x86</tags>
+    <tags>.net dotnet core runtime desktop 5.0 5.0.6 x64 x86</tags>
     <summary>The Desktop Runtime 5.0</summary>
-    <description>Superseded by a more popular package doing the same thing: installing .NET 5 Desktop Runtime</description>
+    <description>Superseded by "dotnet-5.0-desktopruntime"</description>
     <dependencies>
-      <dependency id="dotnet-5.0-desktopruntime" version="5.0.5" />
+      <dependency id="dotnet-5.0-desktopruntime" version="5.0.6" />
     </dependencies>
   </metadata>
   <files />
