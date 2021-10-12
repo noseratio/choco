@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>windows-sdk-11-version-21H2-all</id>
+    <version>10.0.22000.194</version>
+    <packageSourceUrl>https://github.com/noseratio/choco/tree/main/windows-sdk-11-version-21H2-all</packageSourceUrl>
+    <owners>noseratio</owners>
+    <title>Windows Software Development Kit for Windows 11 Version 21H2 (10.0.22000.194) (All Features)</title>
+    <authors>Microsoft Corporation</authors>
+    <projectUrl>https://developer.microsoft.com/en-us/windows/downloads/sdk-archive/</projectUrl>
+    <tags>Windows 10 Windows 11 SDK 21H2 22000 194</tags>
+    <summary>Windows Software Development Kit for Windows 11 Version 21H2 (All Features)</summary>
+    <description>Windows Software Development Kit for Windows 10 Version 21H2 (Build 10.0.22000.194), All Features</description>
+  </metadata>
+  <files>
+    <file src="tools\chocolateyinstall.ps1" target="tools" />
+  </files>
+</package>
