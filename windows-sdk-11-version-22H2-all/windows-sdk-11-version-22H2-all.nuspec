@@ -2,15 +2,15 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>windows-sdk-11-version-22H2-all</id>
-    <version>10.0.22621.1</version>
+    <version>10.0.22621.2</version>
     <packageSourceUrl>https://github.com/noseratio/choco/tree/main/windows-sdk-11-version-22H2-all</packageSourceUrl>
     <owners>noseratio</owners>
-    <title>Windows Software Development Kit for Windows 11 Version 22H2 (10.0.22621.1) (All Features)</title>
+    <title>Windows Software Development Kit for Windows 11 Version 22H2 (10.0.22621.2) (All Features)</title>
     <authors>Microsoft Corporation</authors>
     <projectUrl>https://developer.microsoft.com/en-us/windows/downloads/sdk-archive/</projectUrl>
     <tags>Windows 10 Windows 11 SDK 22H2 22621</tags>
     <summary>Windows Software Development Kit for Windows 11 Version 22H2 (All Features)</summary>
-    <description>Windows Software Development Kit for Windows 11 Version 22H2 (Build 10.0.22621.1), All Features</description>
+    <description>Windows Software Development Kit for Windows 11 Version 22H2 (Build 10.0.22621.2), All Features</description>
   </metadata>
   <files>
     <file src="tools\chocolateyinstall.ps1" target="tools" />
